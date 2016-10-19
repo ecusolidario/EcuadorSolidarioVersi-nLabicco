@@ -1,0 +1,168 @@
+<section class="container" id="navbar-top" data-0="display:block" data-250p="display:none">
+        <nav class="navbar navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#"><img src="images/logo.png" class="img img-responsive logo" alt="Fix México" /></a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="no-background" href="#">Donar</a></li>
+                        <li><a class="no-background" href="#">Solicitar ayuda</a></li>
+                        <li><a class="no-background" href="#">Contactarse</a></li>
+                        <li>
+                            <button type="button" class="navbar-toggle collapsed">
+                                <!-- TOGGLE -->
+                                <img class="toggles" src="images/iconosfix/menu.svg" />
+                            </button>
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div><!--/.container-fluid -->
+          </nav>
+    </section>
+    <!--/#navbar-top--> 
+    
+    <header id="header">
+        <div class="content">
+            <div class="welcome"></div>
+            <div class="welcome-two">
+                <div id="overlay" class="overlay"></div>
+            </div>
+            <div class="intro"></div>
+        </div>
+        <div class="welcome-bg" data-0="opacity:1;" data-100p="opacity:0;">
+            <div class="container">
+                <h1>¿TIENES ALGO QUE NO UTILIZAS?
+                </br>EN MANABÍ LO NECESITAN</h1>
+
+                <h2>Dona ladrillos, colchones, camas, cocinas, ventiladores, refrigeradores, libros, juguetes o todo lo que no uses. Un Ecuatoriano que lo esta necesitando.</h2>
+
+            </div>
+            <div id="manipulate"><a id="link" href="#front" class="circulo"></a></div>
+        </div>
+        <div class="welcome-bg-two" data-100p="opacity:1;" data-200p="opacity:0;">
+            <div id="manipulate"><a id="link" href="#front" class="circulo"></a></div>
+        </div>
+        <div class="intro-bg" data-200p="top:0%;bottom:10%;" data-300p="top:-111.7%;">
+            <!-- Start EasyHtml5Video.com BODY section -->
+            <div class="easyhtml5video" style="position:relative;max-width:100%;">
+                <video autoplay="autoplay" style="width:100%" title="fixMexico" loop="loop" onended="var v=this;setTimeout(function(){v.play()},300)" muted>
+                    <source src="html5video/DSC_0527.m4v" type="video/mp4" />
+                    <source src="html5video/DSC_0527.webm" type="video/webm" />
+                    <source src="html5video/DSC_0527.ogv" type="video/ogg" />
+                    <source src="html5video/DSC_0527.mp4" />
+                    <object type="application/x-shockwave-flash" data="html5video/flashfox.swf" width="100%" height="100%" style="position:relative;">
+                        <param name="movie" value="html5video/flashfox.swf" />
+                        <param name="allowFullScreen" value="true" />
+                        <param name="flashVars" value="autoplay=true&amp;controls=false&amp;fullScreenEnabled=true&amp;posterOnEnd=true&amp;loop=true&amp&amp;src=DSC_0527.m4v" />
+                         <embed src="html5video/flashfox.swf" width="100%" height="100%" style="position:relative;"  flashVars="autoplay=true&amp;controls=false&amp;fullScreenEnabled=true&amp;posterOnEnd=true&amp;loop=true&amp&amp;src=DSC_0527.m4v"	allowFullScreen="true" wmode="transparent" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer_en" />
+                    </object>
+                </video>
+                <script src="html5video/html5ext.js" type="text/javascript"></script>
+            <!-- End EasyHtml5Video.com BODY section -->
+            </div>
+            <div id="manipulate" data-250p="display:none"><a id="link" href="#front" class="circulo"></a></div>
+        </div>
+    </header>
+    <!--/#header--> 
+    
+	
+    
+    <!-- DEPENDENCIAS -->
+    <%= javascript_include_tag 'skrollr.min.js' %>
+    <%= javascript_include_tag 'main.js' %>
+    <%= javascript_include_tag 'bootstrap.min.js' %>
+    <!--[if lt IE 9]>
+    <%= javascript_include_tag 'skrollr.ie.min.js' %>
+	<![endif]-->
+    <script type="text/javascript">
+        var s = skrollr.init({
+            edgeStrategy: 'set',
+            easing: {
+                WTF: Math.random,
+                inverted: function(p) {
+                    return 1-p;
+                }
+            }
+        });
+        $(document).ready(function($) {
+            $('#link').bind('click.smoothscroll', function(e) {
+                e.preventDefault();
+
+                // Get the current target hash
+                var target = this.hash;
+
+                // Animate the scroll bar action so its smooth instead of a hard jump
+                $('html, body').stop().animate({
+                    'scrollTop' : $(target).offset().top
+                }, 900, 'swing', function() {
+                    window.location.hash = target;
+                });
+            });
+        });
+	</script>
+    <%= javascript_include_tag 'classie.js' %>
+    <script>
+        (function() {
+            var morphSearch = document.getElementById( 'morphsearch' ),
+                input = morphSearch.querySelector( 'textarea.morphsearch-input' ),
+                divisor = document.getElementById( 'container-lupa' ),
+                ctrlClose = morphSearch.querySelector( 'span.morphsearch-close' ),
+                bodys = document.body,
+                isOpen = isAnimating = false,
+                // show/hide search area
+                toggleSearch = function(evt) {
+                    // return if open and the input gets focused
+                    if( evt.type.toLowerCase() === 'focus' && isOpen ) return false;
+
+                    var offsets = morphsearch.getBoundingClientRect();
+                    if( isOpen ) {
+                        classie.remove( morphSearch, 'open' );
+                        classie.remove( morphSearch, 'back-gray' );
+                        classie.remove( input, 'sr-only');
+                        classie.remove( divisor, 'hide');
+                        $("#searching").attr("placeholder", "");
+                        classie.remove( bodys, 'no-scroll');
+
+                        // trick to hide input text once the search overlay closes 
+                        // todo: hardcoded times, should be done after transition ends
+                        if( input.value !== '' ) {
+                            setTimeout(function() {
+                                classie.add( morphSearch, 'hideInput' );
+                                setTimeout(function() {
+                                    classie.remove( morphSearch, 'hideInput' );
+                                    input.value = '';
+                                }, 300 );
+                            }, 500);
+                        }
+
+                        input.blur();
+                    }
+                    else {
+                        classie.add( morphSearch, 'open' );
+                        classie.add( morphSearch, 'back-gray');
+                        classie.add( input, 'sr-only');
+                        classie.add( divisor, 'hide');
+                        $("#searching").attr("placeholder", "Buscar");
+                        classie.add( bodys, 'no-scroll');
+
+                    }
+                    isOpen = !isOpen;
+                };
+
+            // events
+            input.addEventListener( 'focus', toggleSearch );
+            ctrlClose.addEventListener( 'click', toggleSearch );
+            // esc key closes search overlay
+            // keyboard navigation events
+            document.addEventListener( 'keydown', function( ev ) {
+                var keyCode = ev.keyCode || ev.which;
+                if( keyCode === 27 && isOpen ) {
+                    toggleSearch(ev);
+                }
+            } );
+
+            /***** for demo purposes only: don't allow to submit the form *****/
+            morphSearch.querySelector( 'button[type="submit"]' ).addEventListener( 'click', function(ev) { ev.preventDefault(); } );
+        })();
+    </script>

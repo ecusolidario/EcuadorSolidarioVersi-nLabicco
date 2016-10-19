@@ -1,0 +1,22 @@
+<%= form_for(@categorium) do |f| %>
+  <% if @categorium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@categorium.errors.count, "error") %> prohibited this categorium from being saved:</h2>
+
+      <ul>
+      <% @categorium.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %> <div class="control-group">
+    Nombre: <%= f.text_field :categoria_nombre %>
+  </div>
+  <div class="control-group">
+    Organizacion :<%= f.number_field :categoria_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

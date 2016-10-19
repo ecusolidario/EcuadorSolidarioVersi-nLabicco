@@ -1,0 +1,17 @@
+<%= form_for(@habilidad) do |f| %>
+  <% if @habilidad.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@habilidad.errors.count, "error") %> prohibited this habilidad from being saved:</h2>
+
+      <ul>
+      <% @habilidad.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

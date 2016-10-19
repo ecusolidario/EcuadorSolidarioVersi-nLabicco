@@ -1,0 +1,17 @@
+<%= form_for(@galerium) do |f| %>
+  <% if @galerium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@galerium.errors.count, "error") %> prohibited this galerium from being saved:</h2>
+
+      <ul>
+      <% @galerium.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

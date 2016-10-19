@@ -1,0 +1,23 @@
+<h1>Listing recursos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recursos.each do |recurso| %>
+      <tr>
+        <td><%= link_to 'Show', recurso %></td>
+        <td><%= link_to 'Edit', edit_recurso_path(recurso) %></td>
+        <td><%= link_to 'Destroy', recurso, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Recurso', new_recurso_path %>

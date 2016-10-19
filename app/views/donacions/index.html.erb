@@ -1,0 +1,23 @@
+<h1>Listing donacions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @donacions.each do |donacion| %>
+      <tr>
+        <td><%= link_to 'Show', donacion %></td>
+        <td><%= link_to 'Edit', edit_donacion_path(donacion) %></td>
+        <td><%= link_to 'Destroy', donacion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Donacion', new_donacion_path %>

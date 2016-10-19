@@ -1,0 +1,35 @@
+<div id='map_simple' class='map'> </div>
+<script>
+L.mapbox.accessToken = 'pk.eyJ1IjoiYmFyYW5kaWdveWVuIiwiYSI6ImNpdWZ6dDd0MjAwaDMzM3AyOXhzMmc1eHUifQ.rsdkvjcgmrKAkD_M-A7sHQ';
+var geojson = [
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-77.031952, 38.913184]
+    },
+    properties: {
+      'marker-color': '#3ca0d3',
+      'marker-size': 'large',
+      'marker-symbol': 'rocket'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-122.413682, 37.775408]
+    },
+    properties: {
+      'marker-color': '#63b6e5',
+      'marker-size': 'large',
+      'marker-symbol': 'rocket'
+    }
+  }
+];
+
+var mapSimple = L.mapbox.map('map_simple', 'mapbox.light')
+  .setView([37.8, -96], 4);
+var myLayer = L.mapbox.featureLayer().setGeoJSON(geojson).addTo(mapSimple);
+mapSimple.scrollWheelZoom.disable();
+</script>
